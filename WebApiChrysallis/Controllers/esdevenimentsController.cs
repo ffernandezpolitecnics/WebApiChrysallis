@@ -21,10 +21,16 @@ namespace WebApiChrysallis.Controllers
         {
             db.Configuration.LazyLoadingEnabled = false;
 
+
             List<esdeveniments> _esdeveniments = (
                 from e in db.esdeveniments.Include("comunitats")
                 select e
                 ).ToList();
+
+            //List<esdeveniments> _esdeveniments =
+            //    db.esdeveniments
+            //    .Include("comunitats")
+            //    .ToList();
 
             return _esdeveniments;
         }
@@ -43,6 +49,12 @@ namespace WebApiChrysallis.Controllers
                     where e.id == id
                     select e
                 ).FirstOrDefault();
+
+            //esdeveniments _esdeveniment =
+            //    db.esdeveniments
+            //    .Include("documents")
+            //    .Where(e => e.id == id)
+            //    .FirstOrDefault();
 
             if (_esdeveniment == null)
             {
