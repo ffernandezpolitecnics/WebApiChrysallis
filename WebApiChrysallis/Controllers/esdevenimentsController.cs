@@ -23,6 +23,7 @@ namespace WebApiChrysallis.Controllers
 
 
             List<esdeveniments> _esdeveniments = (
+
                 from e in db.esdeveniments.Include("comunitats")
                 select e
                 ).ToList();
